@@ -1,9 +1,11 @@
 ---
-name: roadmap-analysis
-description: Analyse codebase for improvement opportunities - performance, complexity, technical debt, future features. Produces roadmap content for README.
+name: crystal-ball
+description: "Consult the crystal ball. What COULD this project become? Performance, tech debt, security, features."
 ---
 
-# Roadmap Analysis
+# The Crystal Ball
+
+"Let me consult my crystal ball..."
 
 Identify what the codebase COULD BE, not what it IS.
 
@@ -102,3 +104,11 @@ Return structured markdown:
 - Explain WHY something is an opportunity, not just WHAT
 - Prioritise by impact (High/Medium/Low)
 - Don't overwhelm - top 5-10 items per category max
+
+## Handoff
+
+After presenting findings:
+
+- Ask: "Crystal ball has spoken. Happy with these insights, or want to explore more? Ready for a brain-jam with Gemini?"
+- If refine -> address feedback, ask again
+- If continue -> Use `brain-jam`
