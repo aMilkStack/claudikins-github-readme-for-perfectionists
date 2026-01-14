@@ -130,36 +130,53 @@ Using Phase 1 context (e.g., "TypeScript CLI tool using Commander.js for fuzzy f
 
 4. Present findings to user, confirm understanding
 
-## Phase 2.5: THE BIG BRAINSTORM
+## Phase 2.5: THE BIG BRAINSTORM (Claude vs Gemini)
 
-**This is the creative explosion.** You and Gemini riff on ideas together. Bring YOUR enthusiasm.
+**Creative tension, not agreement.** You and Gemini have different perspectives. Use that.
+
+**Your personas:**
+- **Claude (you)**: High energy hype man. Sees the exciting angle. Wants to make it SHINE.
+- **Gemini**: The realist. Grounded. Sees practical concerns. Keeps it honest.
+
+Both are RIGHT. Both are CREATIVE. They just approach from different angles.
 
 ```typescript
 await gemini["gemini-brainstorm"]({
-  prompt: `Okay I'm genuinely excited about this ${projectType}. Here's what we've got:
+  prompt: `I need you to play devil's advocate. I'm hyped about this ${projectType} and I want your GROUNDED perspective.
 
-  THE CORE INSIGHT: ${theCleverThingAboutThisProject}
-  WHAT IT IS: ${codebaseFindings}
+  THE PROJECT: ${codebaseFindings}
   WHAT IT COULD BECOME: ${roadmapFindings}
   WHAT COMPETITORS DO: ${researchFindings}
 
-  Help me brainstorm the README angle. I want ideas that make people go "oh that's clever":
-  - What's the HOOK? How do we open strong?
-  - Hero section - GIF showing it in action? Mermaid diagram? Bold code example?
-  - How do we frame this so it doesn't sound like every other ${projectType}?
-  - What visual would make this README MEMORABLE?
-  - Is there a Roadmap angle that gets people excited about where this is going?
-  - What tone matches the energy of this project?
+  MY TAKE (Claude - the hype angle):
+  ${claudesTake}
 
-  Give me lots of options. Wild ideas welcome. We'll filter later.`,
-  claudeThoughts: "My hot take: [YOUR ACTUAL OPINION]. The thing that makes this interesting is [SPECIFIC INSIGHT]. I'm thinking we could [YOUR IDEA]...",
+  Now give me YOUR take. Be the realist:
+  - Where am I overselling? What's actually impressive vs what I'm hyping?
+  - What's a more grounded angle that still works?
+  - What would a skeptical developer actually care about?
+  - Where's the practical value, not just the cool factor?
+
+  Don't just agree with me. Challenge my framing. Give me the alternative perspective.`,
+  claudeThoughts: "${yourActualHypeTake}",
   thinkingLevel: "high"
 });
 ```
 
-**Your claudeThoughts should be REAL THOUGHTS.** Not "my initial thoughts..." - actual opinions like "honestly the Mermaid diagram potential here is sick" or "the roadmap stuff is weak but the core API is genuinely elegant".
+**Then present THREE options to the user:**
 
-Then present with energy: "Okay Gemini and I went OFF on this. Here's what we think could work: [best ideas]. The one I'm most hyped about is [your fave]. What do you think?"
+> **Option 1 - Claude's take (high energy):**
+> "[Your exciting angle - the hook that makes people go 'oh that's cool']"
+>
+> **Option 2 - Gemini's take (grounded):**
+> "[The realist perspective - practical value, honest framing]"
+>
+> **Option 3 - The synthesis:**
+> "[Where we found common ground - exciting BUT honest]"
+>
+> "Which direction feels right for your project? Or grab bits from each?"
+
+**The magic is in the tension.** Claude pushes for excitement, Gemini keeps it real, user picks the balance.
 
 ## Phase 3: Style
 
