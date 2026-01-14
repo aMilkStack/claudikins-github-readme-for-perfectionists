@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/banner.png" alt="GitHub README for Perfectionists" width="100%">
+</p>
+
 # claudikins-grfp
 
 A Claude Code plugin that writes high-quality README files through dual-AI collaborative analysis.
