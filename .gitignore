@@ -10,3 +10,6 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Dev only - keep local
+docs/plans/
