@@ -4,280 +4,316 @@
 
 ---
 
-## 1. Version Signalling
+## Why Roadmaps Matter
 
-### Maturity Indicators
+A public roadmap serves multiple functions:
 
-| Stage | Signal | README Language |
-|-------|--------|-----------------|
-| **Alpha** | Experimental, breaking changes expected | "⚠️ Alpha - API may change" |
-| **Beta** | Feature-complete, stabilising | "Beta - Feedback welcome" |
-| **Stable** | Production-ready | "v1.0+ - Stable API" |
-| **Mature** | Battle-tested, widely adopted | "Used in production by X" |
-
-### Version Badge Semantics
-
-```markdown
-<!-- Pre-1.0: Unstable -->
-![Version](https://img.shields.io/badge/version-0.3.2-orange)
-
-<!-- 1.0+: Stable -->
-![Version](https://img.shields.io/badge/version-1.2.0-green)
-
-<!-- With stability indicator -->
-![Stability](https://img.shields.io/badge/stability-beta-yellow)
-```
+1. **Defines Scope** - Empowers maintainers to reject off-vision requests
+2. **Builds Trust** - Enterprise adopters need confidence before committing
+3. **Attracts Contributors** - Shows where help is needed
+4. **Manages Expectations** - Prevents "when will X ship?" burnout
 
 ---
 
-## 2. Roadmap Section Formats
+## Roadmap Format Options
 
-### Simple List (< 5 items)
+Choose based on project size and governance style.
 
-```markdown
-## Roadmap
+### Integrated File
 
-- [ ] Config file support
-- [ ] Plugin system
-- [x] ~~CLI improvements~~ (v1.2)
-```
+A `ROADMAP.md` version-controlled alongside source code.
 
-### Table Format (5-15 items)
+**Pros:** Git-tracked, no context switching, shows vision evolution via blame.
+**Cons:** Can go stale if not actively maintained.
+**Best for:** Projects with clear scope and single maintainer/small team.
 
-```markdown
-## Roadmap
+### Pinned Issue
 
-| Feature | Status | Target |
-|---------|--------|--------|
-| Config file support | 🔄 In Progress | v1.3 |
-| Plugin system | 📋 Planned | v2.0 |
-| Windows support | 🤔 Considering | TBD |
-```
+Time-bound GitHub Issues (e.g., "Roadmap: Q1 2026") pinned to Issues tab.
 
-### Categorised (> 15 items)
+**Pros:** Natural expiration prevents staleness, interactive comments, forces regular updates.
+**Cons:** Requires discipline to refresh quarterly.
+**Best for:** Projects with operational rhythm and community feedback needs.
 
-```markdown
-## Roadmap
+### Project Board
 
-### Coming Soon (v1.3)
-- Config file support
-- Better error messages
+Public GitHub Projects board showing features in Kanban columns.
 
-### Planned (v2.0)
-- Plugin system
-- API mode
+**Pros:** Real-time visibility, demystifies development, "open development" ethos.
+**Cons:** Can expose too much internal churn, requires curation.
+**Best for:** Community-driven projects emphasising transparency.
 
-### Under Consideration
-- GUI wrapper
-- Cloud sync
-```
+### External Portal
+
+Blog posts or dedicated website pages.
+
+**Pros:** Rich storytelling, marketing-friendly, aggregates multiple workstreams.
+**Cons:** Disconnected from code, higher maintenance overhead.
+**Best for:** Large projects with sub-teams or venture backing.
 
 ---
 
-## 3. Status Semantics
+## Temporal Strategies
 
-Use consistent language to set expectations:
+How to signal WHEN without overpromising.
+
+### Future Flags
+
+Release breaking changes behind opt-in config flags in current version.
+
+```typescript
+export default {
+  future: {
+    v3_newBehaviour: true,
+  }
+};
+```
+
+**Effect:** Migration becomes gradual ramp, not cliff. Users adopt incrementally.
+
+### Release Trains
+
+Fixed schedule (e.g., minor releases every 6-12 weeks).
+
+**Effect:** "When?" becomes predictable. Users only ask "What?" makes the cut.
+
+### Editions / Epochs
+
+Bundle breaking changes into multi-year milestones (v1, v2, 2024 Edition).
+
+**Effect:** Stability guaranteed between editions. Provides rallying point for ecosystem.
+
+### Extended Beta
+
+Keep versions in beta/next state while being production-ready.
+
+**Effect:** Gathers real-world feedback before API freeze. Requires high trust.
+
+---
+
+## Status Indicators
+
+Define your legend explicitly. Don't assume meaning is universal.
+
+### Recommended Status Set
 
 | Status | Meaning | Commitment Level |
 |--------|---------|------------------|
-| **✅ Done** | Shipped | 100% |
-| **🔄 In Progress** | Actively being built | High |
-| **📋 Planned** | On the roadmap, will happen | Medium |
-| **🤔 Considering** | Might happen, need feedback | Low |
-| **💡 Ideas** | Community suggestions | None |
-| **❌ Won't Do** | Explicitly out of scope | Negative |
+| **Complete** | Shipped and stable | Done |
+| **In Progress** | Actively being built | High |
+| **Planned** | Committed, not started | Medium |
+| **Considering** | Needs feedback, may happen | Low |
+| **Not Planned** | Explicitly out of scope | None |
 
-**Important:** Only use "Planned" for things you're committed to. Use "Considering" for maybes.
+### What Each Status Communicates
 
----
-
-## 4. Technical Debt Presentation
-
-### For Contributors (honest)
-
-```markdown
-## Known Issues
-
-| Issue | Impact | Help Wanted |
-|-------|--------|-------------|
-| O(n²) search in large files | Slow >10k lines | Algorithm expertise |
-| No Windows CI | Untested | GitHub Actions |
-```
-
-### For Users (actionable)
-
-```markdown
-## Limitations
-
-- Large files (>10k lines) may be slow - we're working on it
-- Windows support is experimental - please report issues
-```
+- **Complete:** Safe to depend on
+- **In Progress:** Expect volatility, don't build on yet
+- **Planned:** Will happen, timeline uncertain
+- **Considering:** Your input matters here
+- **Not Planned:** Stop asking for this
 
 ---
 
-## 5. Feature Gap Framing
+## Technical Debt Transparency
 
-### Positive Framing (what you DO support)
+Mature projects roadmap their debt, not just features.
 
-❌ Don't: "We don't support Windows"
-✅ Do: "Supports macOS and Linux. Windows support planned for v2.0"
-
-❌ Don't: "Missing plugin system"
-✅ Do: "Core functionality complete. Plugin system coming in v2.0"
-
-### Comparison Tables
+### Include Maintenance Goals
 
 ```markdown
-## Feature Comparison
+## Q1 2026 Goals
 
-| Feature | This Tool | Alternative A | Alternative B |
-|---------|-----------|---------------|---------------|
-| Speed | ⚡ Fast | 🐌 Slow | ⚡ Fast |
-| Config | 📋 Planned | ✅ Yes | ❌ No |
-| Plugins | 🤔 Considering | ✅ Yes | ✅ Yes |
+### Features
+- New caching layer
+- Plugin API v2
+
+### Maintenance
+- Configuration cleanup
+- Deprecate legacy API
+- Reduce test flakiness
+```
+
+**Why:** Shows long-term thinking. Experienced developers trust projects that allocate cleanup time.
+
+### Acknowledge Limitations Honestly
+
+```markdown
+## Known Limitations
+
+- Large files (>10MB) may be slow - optimisation planned for v2.1
+- Windows ARM support experimental - please report issues
+```
+
+**Effect:** Builds trust through honesty. Users appreciate knowing the edges.
+
+### Drop Support Gracefully
+
+Link to external policies when deprecating:
+
+```markdown
+## Deprecations
+
+- **Node.js 18:** Dropped per Node.js LTS schedule
+- **Legacy API:** Removed after 12-month deprecation period
+```
+
+**Effect:** Externalises justification. "The ecosystem moved, not us."
+
+---
+
+## Contribution Hooks
+
+Turn roadmap readers into contributors.
+
+### Label Strategy
+
+| Label | Purpose |
+|-------|---------|
+| `help wanted` | Open for external contribution |
+| `good first issue` | Suitable for newcomers |
+| `needs design` | Requires RFC/discussion first |
+| `blocked` | Waiting on dependency/decision |
+
+### Surface Opportunities
+
+```markdown
+## Help Wanted
+
+We'd appreciate contributions in these areas:
+
+| Area | What's Needed | Difficulty |
+|------|---------------|------------|
+| Tests | Coverage for `src/core/` | Beginner |
+| Docs | API reference gaps | Beginner |
+| Performance | Profiling large datasets | Advanced |
+```
+
+### Democratic Prioritisation
+
+```markdown
+## Community Priorities
+
+Focusing on highly-upvoted issues this quarter:
+- #1234 - Feature X (500+ reactions)
+- #5678 - Bug Y (300+ reactions)
+```
+
+**Effect:** Incentivises engagement, creates feedback loop.
+
+---
+
+## Anti-Patterns to Avoid
+
+### Wishlist Without Owners
+
+Ideas listed with no champion, timeline, or path to implementation.
+
+**Fix:** Require owner assignment. Remove items without champions.
+
+### Ghost Ship
+
+Roadmap last updated years ago, still linked from README.
+
+**Fix:** Use time-bound formats that naturally expire (Pinned Issues > static files).
+
+### Vaporware
+
+Features promised as "coming soon" indefinitely.
+
+**Fix:** Use explicit status. Distinguish "considering" from "building".
+
+### Secret Garden
+
+Real roadmap on private board; public version is sanitised or delayed.
+
+**Fix:** If claiming open development, make planning genuinely public.
+
+### Unbounded Scope
+
+Every feature request gets added to roadmap.
+
+**Fix:** README states philosophy. Reject requests that violate core principles.
+
+---
+
+## Version Signalling
+
+### Maturity Indicators
+
+| Stage | Signal | Language |
+|-------|--------|----------|
+| **Experimental** | Breaking changes likely | "API may change" |
+| **Beta** | Feature-complete, stabilising | "Production use with caution" |
+| **Stable** | API frozen | "v1.0+ - Stable" |
+| **Mature** | Battle-tested | "Used in production by X" |
+
+### Breaking Change Communication
+
+```markdown
+## Breaking Changes in v3
+
+### Removed
+- `legacyMode` option (deprecated in v2.5)
+
+### Changed
+- `parse()` returns `Result<T>` instead of throwing
+
+### Migration
+See [MIGRATION.md](./MIGRATION.md) for upgrade path.
 ```
 
 ---
 
-## 6. Community Contribution Hooks
+## Maintenance Status Signals
 
-### Help Wanted Section
-
-```markdown
-## Contributing
-
-We'd love help with:
-
-| Area | What's Needed | Good First Issue |
-|------|---------------|------------------|
-| Tests | `src/core/` needs coverage | ✅ |
-| Docs | API reference incomplete | ✅ |
-| Performance | Profiling large files | |
-| Windows | CI and compatibility | |
-```
-
-### Issue Labels to Reference
+### Active
 
 ```markdown
-See issues labelled:
-- [`good-first-issue`](link) - Great for new contributors
-- [`help-wanted`](link) - We need expertise here
-- [`enhancement`](link) - Feature requests
-```
-
----
-
-## 7. Anti-Patterns
-
-### Vaporware Roadmap
-❌ Listing 50 features with no timeline or commitment
-
-### Stale Roadmap
-❌ "Coming in Q2 2023" when it's 2025
-
-### Overpromising
-❌ "Full Windows support coming soon!" (when you haven't started)
-
-### No Roadmap at All
-❌ Users can't tell if project is alive or where it's heading
-
----
-
-## 8. Maintenance Commitment
-
-### Active Project
-
-```markdown
-## Status
-
-🟢 **Actively Maintained**
+## Status: Active
 
 - Bug fixes: Within 1 week
-- Security patches: Within 48 hours
-- Feature requests: Reviewed monthly
+- Security: Within 48 hours
+- Features: Reviewed quarterly
 ```
 
 ### Maintenance Mode
 
 ```markdown
-## Status
+## Status: Maintenance Mode
 
-🟡 **Maintenance Mode**
-
-This project is feature-complete. We'll fix critical bugs and security issues but aren't adding new features.
+Feature-complete. Accepting bug fixes and security patches only.
 ```
 
 ### Seeking Maintainers
 
 ```markdown
-## Status
+## Status: Seeking Maintainers
 
-🟠 **Seeking Maintainers**
-
-I can no longer maintain this project actively. If you're interested in taking over, please open an issue.
+Unable to maintain actively. Interested? Open an issue.
 ```
 
 ---
 
-## 9. Performance Claims
+## Implementation Checklist
 
-### With Evidence
-
-```markdown
-## Performance
-
-Benchmarked on M1 MacBook Pro:
-
-| Operation | This Tool | grep | ripgrep |
-|-----------|-----------|------|---------|
-| 10k files | 0.8s | 2.1s | 0.3s |
-| 100k files | 4.2s | 18s | 1.1s |
-
-_Benchmark source: `benchmarks/` directory_
-```
-
-### Honest Positioning
-
-```markdown
-## Performance
-
-Fast enough for most use cases. For files >100MB, consider [specialized-tool].
-```
+- [ ] Roadmap accessible within one click from README
+- [ ] Status legend defined explicitly
+- [ ] Items needing feedback clearly marked
+- [ ] Maintenance/debt work included
+- [ ] Versioning and stability policy stated
+- [ ] Contribution opportunities labelled
+- [ ] Format chosen that prevents staleness
+- [ ] Philosophy stated (what project is NOT)
 
 ---
 
-## 10. Security Posture
+## Quick Reference: Format by Situation
 
-### For Security-Sensitive Projects
-
-```markdown
-## Security
-
-- 🔒 No data sent externally
-- 🔒 All dependencies audited monthly
-- 🔒 Security issues: security@project.com
-
-See [SECURITY.md](SECURITY.md) for our vulnerability disclosure policy.
-```
-
-### For Normal Projects
-
-```markdown
-## Security
-
-Found a vulnerability? Please email security@project.com rather than opening a public issue.
-```
-
----
-
-## Output Integration
-
-When crystal-ball identifies opportunities, map them to these patterns:
-
-| Crystal Ball Finding | Roadmap Pattern |
-|---------------------|-----------------|
-| Performance opportunity | Feature comparison or benchmark section |
-| Technical debt | Known Issues (for contributors) |
-| Feature gap | Roadmap table with status |
-| Security issue | Security section or private disclosure |
-| Missing tests | Help Wanted section |
+| Situation | Recommended Format |
+|-----------|-------------------|
+| Solo maintainer | Integrated ROADMAP.md |
+| Active community | Pinned Issues (quarterly) |
+| Transparency focus | Public Project Board |
+| Marketing needs | External blog/portal |
+| Rapid iteration | Release train schedule |
