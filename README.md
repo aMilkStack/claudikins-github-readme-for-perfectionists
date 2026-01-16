@@ -22,9 +22,13 @@ AI-generated documentation has a smell. You know it when you read it: *"This too
 
 ## Quick Start
 
-Requires [claudikins-marketplace](https://github.com/aMilkStack/claudikins-marketplace):
+Install via Claude Code Plugin:
 
 ```bash
+# Add the Claudikins marketplace
+/marketplace add aMilkStack/claudikins-marketplace
+
+# Install the plugin
 /plugin install claudikins-grfp
 ```
 
