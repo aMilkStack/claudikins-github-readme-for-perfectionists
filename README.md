@@ -12,7 +12,7 @@
 
 ESLint for prose. A Claude Code plugin that treats "delve" as a syntax error.
 
-AI-generated documentation has a smell. You know it when you read it: *"This tool delves into the landscape of seamless integration..."* - zero information, pure filler. GRFP bans those words and enforces sentence patterns that require specifics.
+AI-generated documentation has a smell. You know it when you read it: *"This tool delves into the landscape of seamless integration..."* - zero information, pure filler. I bet reading that you thought, but this sounds like AI, you're right actually, written before using the plugin. 
 
 **Before:**
 > ~~This library provides a seamless way to delve into documentation generation, unleashing the full potential of your README workflow.~~
