@@ -7,6 +7,12 @@ description: "Consult the crystal ball. What COULD this project become? Performa
 
 **Goal:** Identify what the codebase **COULD BE**, not what it IS.
 
+## Step 1: Load Reference
+
+Read `references/roadmap-patterns.md` for presentation patterns and anti-patterns.
+
+---
+
 ## Analysis Checklist
 
 ### 1. Complexity Analysis (Priority)

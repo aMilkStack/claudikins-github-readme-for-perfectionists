@@ -27,15 +27,15 @@ Complete templates for each README section.
 ```markdown
 ## What is [Project]?
 
-**The Problem:** [Pain point in 1-2 sentences]
-
-**The Solution:** [How this project solves it]
+[Project] does X for Y. Instead of [tedious manual approach], you [simple action] and get [result].
 
 **Key Features:**
 - [Feature 1]: [Benefit]
 - [Feature 2]: [Benefit]
 - [Feature 3]: [Benefit]
 ```
+
+**Pattern:** Show value through contrast, not "Problem/Solution" headers.
 
 ## 3. Table of Contents
 
